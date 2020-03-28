@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "326477851713",
+    "firebase_url": "https://mobi-flm.firebaseio.com",
+    "project_id": "mobi-flm",
+    "storage_bucket": "mobi-flm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326477851713:android:602a3bf9fdb814c9f7eac0",
+        "android_client_info": {
+          "package_name": "com.mx.mobi_flm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326477851713-cnej7kvuuhe9dmauic3m30mqld0poisq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mx.mobi_flm",
+            "certificate_hash": "b127939fc079208194bf0a9efe55946d7d1879b6"
+          }
+        },
+        {
+          "client_id": "326477851713-4hsufs9q8q6jvc07ib3li3fd904f9p26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6SD0a7BaCbZwj0gaAcuvLPsdMvmVwSwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326477851713-4hsufs9q8q6jvc07ib3li3fd904f9p26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

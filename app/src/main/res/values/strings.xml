@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MobileFLM</string>
+    <string name="hello">Hello World!!!!</string>
+    <string name="sub">Submit</string>
+    <string name="card">CArdView</string>
+    <string name="test">TESTE TOTAL</string>
+    <string name="pacientes" >Pacientes:</string>
+    <string name="getpacientes" > Get pacients</string>
+</resources>
