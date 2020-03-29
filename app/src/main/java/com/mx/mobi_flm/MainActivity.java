@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
@@ -39,7 +40,8 @@ private Button btn1, btn2;
     private String[] pacientes=new String[10];
     Integer i=0;
     Integer j=0;
-
+    User mUser1, mUser2,mUser3;
+    User[] mUserArray;
 // Firebase members
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -67,6 +69,8 @@ private Button btn1, btn2;
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                         Log.i("FIREBASE", i.toString()+ ":"+ document.getId() + " => " +document.getData());
+                        mUserArray[i]=document.toObject(User.class);
+                        Log.i("DAO", mUserArray[i].toString());
                         pacientes[i++]= document.getId();
                     }
                 } else {
@@ -74,6 +78,26 @@ private Button btn1, btn2;
                 }
             }
         });
+
+        myDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (Objects.requireNonNull(document).exists()) {
+                        Log.i("FIREBASE", "DocumentSnapshot data: " + document.getData());
+                        User user = document.toObject(User.class);
+                        Log.i("DAO-OLD", Objects.requireNonNull(user).toString());
+
+                    } else {
+                        Log.i("FIREBASE", "No such document");
+                    }
+                } else {
+                    Log.i("FIREBASE", "get failed with ", task.getException());
+                }
+            }
+        });
+///-------------------------------------------------------- View ACTIONS_---------------------------------------->
 
       btn1.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {
