@@ -61,7 +61,6 @@ private Button btn1, btn2;
        //Firebase
         db = FirebaseFirestore.getInstance();
         myRef=db.collection("Users");
-        myDoc=myRef.document("Latussa");
 
         myRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -79,25 +78,7 @@ private Button btn1, btn2;
             }
         });
 
-        myDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (Objects.requireNonNull(document).exists()) {
-                        Log.i("FIREBASE", "DocumentSnapshot data: " + document.getData());
-                        User user = document.toObject(User.class);
-                        Log.i("DAO-OLD", Objects.requireNonNull(user).toString());
-
-                    } else {
-                        Log.i("FIREBASE", "No such document");
-                    }
-                } else {
-                    Log.i("FIREBASE", "get failed with ", task.getException());
-                }
-            }
-        });
-///-------------------------------------------------------- View ACTIONS_---------------------------------------->
+     //  <---------------------------------------------------- View ACTIONS_---------------------------------------->
 
       btn1.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {
