@@ -5,5 +5,5 @@
     <string name="card">CArdView</string>
     <string name="test">TESTE TOTAL</string>
     <string name="pacientes" >Pacientes:</string>
-    <string name="getpacientes" > Get pacients</string>
+    <string name="getpacientes" > Buscar Pacientes</string>
 </resources>

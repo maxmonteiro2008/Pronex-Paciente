@@ -4,6 +4,8 @@ package com.mx.mobi_flm;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.lang.Integer;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 //Views members
 private Button btn1, btn2;
-    TextView textView1, textView2;
+    TextView textView1, textView2,textView3,textView4;
 
     //aux members
     private String[] pacientes=new String[10];
@@ -57,7 +59,9 @@ private Button btn1, btn2;
         //Views connection
         btn1 = findViewById(R.id.button1);
        textView2= findViewById(R.id.textview2);
-
+        textView3= findViewById(R.id.textView3);
+        textView4= findViewById(R.id.textView4);
+        //textView1= findViewById(R.id.textview1);
        //Firebase
         db = FirebaseFirestore.getInstance();
         myRef=db.collection("Users");
@@ -81,13 +85,18 @@ private Button btn1, btn2;
      //  <---------------------------------------------------- View ACTIONS_---------------------------------------->
 
       btn1.setOnClickListener(new View.OnClickListener() {
+          @SuppressLint("SetTextI18n")
           public void onClick(View v) {
               if(j<i){
                   textView2.setText(pacientes[j]);
+                  textView3.setText(mUserArray[j].getNickname());
+                  textView4.setText(mUserArray[j].getTransactions().toString());
                   j++;
               }
               else{
                   textView2.setText(pacientes[0]);
+                  textView3.setText(mUserArray[0].getNickname());
+                  textView4.setText(mUserArray[0].getTransactions().toString());
               }
           }
 
