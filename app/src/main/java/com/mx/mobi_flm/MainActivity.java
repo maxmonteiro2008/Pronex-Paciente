@@ -41,7 +41,7 @@ private Button btn1, btn2;
     Integer i=0;
     Integer j=0;
     User mUser1, mUser2,mUser3;
-    User[] mUserArray;
+    private User[] mUserArray= new User[10];
 // Firebase members
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
