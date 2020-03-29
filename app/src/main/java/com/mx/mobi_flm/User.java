@@ -9,15 +9,15 @@ public class User {
     private Integer transactions;
 
   public void setNickname(String nickname) {this.nickname = nickname;}
-  public void setTransaction(Integer transaction) {this.transactions = transaction;}
+  public void setTransactions(Integer transaction) {this.transactions = transaction;}
   public String getNickname() {return this.nickname;}
   public Integer getTransactions() { return this.transactions; }
 
     public User(){}
 
-    public User(String nickname,Integer transaction){
+    public User(String nickname,Integer transactions){
         this.nickname=nickname;
-        this.transactions=transaction;
+        this.transactions=transactions;
 
     }
 
