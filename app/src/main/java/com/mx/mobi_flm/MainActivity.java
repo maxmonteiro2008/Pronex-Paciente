@@ -10,15 +10,15 @@ import android.os.Bundle;
 import android.util.Log;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,8 +27,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 //import com.google.firebase.database.DatabaseReference;
 //import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 //Views members
 private Button btn1, btn2;
     TextView textView1, textView2,textView3,textView4;
-
+    ListView listview1;
     //aux members
     private String[] pacientes=new String[10];
     Integer i=0;
@@ -61,7 +59,9 @@ private Button btn1, btn2;
        textView2= findViewById(R.id.textview2);
         textView3= findViewById(R.id.textView3);
         textView4= findViewById(R.id.textView4);
-        //textView1= findViewById(R.id.textview1);
+        //listview1=(ListView) findViewById(R.id.listview1);
+
+       //textView1= findViewById(R.id.textview1);
        //Firebase
         db = FirebaseFirestore.getInstance();
         myRef=db.collection("Users");
@@ -81,6 +81,13 @@ private Button btn1, btn2;
                 }
             }
         });
+
+        // LIST VIEW
+
+      /* if(pacientes[0]!= null) {
+           ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,R.layout.activity_listview, R.id.list_item,pacientes);
+           listview1.setAdapter(myAdapter);
+       }*/
 
      //  <---------------------------------------------------- View ACTIONS_---------------------------------------->
 
