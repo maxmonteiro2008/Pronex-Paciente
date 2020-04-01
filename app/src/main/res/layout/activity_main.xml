@@ -16,41 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:drawableStart="@drawable/health_checkup"
         android:text="@string/getpacientes" />
-
-    <GridLayout
-        android:id="@+id/GL_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:orientation="vertical"
-        android:rowCount="2"
-        android:visibility="visible">
-
-        <ImageButton
-            android:id="@+id/button2"
-            android:layout_width="32dp"
-            android:layout_height="16dp"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_gravity="start|top"
-            android:contentDescription="@string/test"
-            android:src="@drawable/health_graph" />
-
-        <ImageButton
-            android:id="@+id/button3"
-            android:layout_width="32dp"
-            android:layout_height="16dp"
-            android:layout_row="1"
-            android:layout_rowSpan="2"
-            android:layout_column="0"
-            android:layout_gravity="start|top"
-            android:contentDescription="@string/test"
-            android:src="@drawable/health_calendar" />
-    </GridLayout>
 
     <TextView
         android:id="@+id/textview2"
@@ -109,5 +77,36 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <GridLayout
+        android:id="@+id/GL_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="2"
+        android:visibility="visible">
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="start|top"
+            android:contentDescription="@string/test"
+            android:src="@drawable/health_graph" />
+
+        <ImageButton
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="start|top"
+            android:contentDescription="@string/test"
+            android:src="@drawable/health_book_red" />
+    </GridLayout>
 
 </LinearLayout>
