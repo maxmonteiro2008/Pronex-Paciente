@@ -4,7 +4,10 @@
     <string name="sub">Submit</string>
     <string name="card">CArdView</string>
     <string name="test">TESTE TOTAL</string>
-    <string name="pacientes">Pacientes:</string>
+    <string name="pacientes">Paciente:</string>
+    <string name="opcoes">Opções:</string>
+    <string name="doenca">Doenças:</string>
+    <string name="dias">Dias de Tratamento:</string>
     <string name="getpacientes"> Buscar Pacientes</string>
     <string name="title_activity_listview">activity_listview</string>
     <!-- Strings used for fragments for navigation -->
