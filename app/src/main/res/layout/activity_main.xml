@@ -10,161 +10,10 @@
     android:visibility="visible"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button1"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        android:layout_marginEnd="8dp"
-        android:drawableStart="@drawable/googleg_standard_color_18"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="@string/login" />
-
-    <EditText
-        android:id="@+id/editlogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:autofillHints="@string/sub"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        android:ems="10"
-        android:hint="@string/login"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/editpass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:autofillHints="@string/sub"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        android:ems="10"
-        android:hint="@string/senha"
-        android:inputType="textPassword" />
-
-
-    <GridLayout
-        android:id="@+id/GL_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:layoutMode="opticalBounds"
-        android:orientation="vertical"
-        android:rowCount="2"
-        android:visibility="visible">
-
-        <ImageButton
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_gravity="center"
-            android:contentDescription="@string/test"
-            android:src="@drawable/health_graph" />
-
-        <ImageButton
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_gravity="center"
-            android:contentDescription="@string/test"
-            android:src="@drawable/health_pill_96" />
-
-        <ImageButton
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:layout_gravity="center"
-            android:contentDescription="@string/test"
-            android:src="@drawable/health_calendar_96" />
-
-        <ImageButton
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_gravity="center"
-            android:contentDescription="@string/test"
-            android:src="@drawable/health_reflection_96" />
-
-    </GridLayout>
-
-    <LinearLayout
-        android:id="@+id/LL_int_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textViewdoenca"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/colorAccent"
-            android:includeFontPadding="true"
-            android:text="@string/doenca"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:includeFontPadding="true"
-            android:text="@string/doenca"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="18sp"
-            android:textStyle="bold|italic" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LL_int_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textViewDias"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/colorAccent"
-            android:includeFontPadding="true"
-            android:text="@string/dias"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="24sp"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:includeFontPadding="true"
-            android:text="@string/dias"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-    </LinearLayout>
+        android:src="@drawable/login" />
 
     <LinearLayout
         android:id="@+id/LL_int_1"
@@ -179,12 +28,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/colorAccent"
             android:includeFontPadding="true"
             android:text="@string/pacientes"
             android:textAlignment="textStart"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold|italic" />
 
         <TextView
             android:id="@+id/textview2"
@@ -196,9 +44,54 @@
             android:includeFontPadding="true"
             android:text="@string/hello"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textStyle="normal" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/LL_int_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:drawableStart="@drawable/googleg_standard_color_18"
+            android:drawableEnd="@drawable/play_24"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/login" />
+
+        <EditText
+            android:id="@+id/editpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autofillHints="@string/sub"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:defaultFocusHighlightEnabled="true"
+            android:drawableEnd="@drawable/lock_24"
+            android:ems="10"
+            android:hint="@string/senha"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/editlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autofillHints="@string/sub"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:drawableEnd="@drawable/mail_login_24"
+            android:ems="10"
+            android:hint="@string/login"
+            android:inputType="textEmailAddress" />
+    </LinearLayout>
 </LinearLayout>

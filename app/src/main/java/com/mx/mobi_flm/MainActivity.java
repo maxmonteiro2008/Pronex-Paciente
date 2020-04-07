@@ -6,19 +6,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,21 +27,54 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String UID = "com.mx.mobi_flm.UID";
+    TextView textView1, textView2;
 //Views members
-private Button btn1, btn2;
-    TextView textView1, textView2,textView3,textView4;
-    ListView listview1;
+private Button btn1;
+    private EditText edname, edpassword;
     //aux members
     private String[] pacientes=new String[10];
     Integer i=0;
     Integer j=0;
+    private String email, password;
     User mUser1, mUser2,mUser3;
     private User[] mUserArray= new User[10];
-// Firebase members
+    private String user;
+    private Boolean logedin = false;
+    // Firebase members
     private FirebaseAuth mAuth;
+    private FirebaseUser fbuser;
     private FirebaseFirestore db;
     private CollectionReference myRef ;
     private DocumentReference myDoc;
+
+    private void login(String email, String password) {
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.i("LOGIN", "signInWithEmail:success");
+                            fbuser = mAuth.getCurrentUser();
+                            user = "OK";
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.i("LOGIN", "signInWithEmail:failure", task.getException());
+                            user = "login fail";
+
+
+                        }
+
+                    }
+                });
+
+
+    }
 
 
     @Override
@@ -51,19 +82,21 @@ private Button btn1, btn2;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //Views connection
         btn1 = findViewById(R.id.button1);
-       textView2= findViewById(R.id.textview2);
-        textView3= findViewById(R.id.textView3);
-        textView4= findViewById(R.id.textView4);
+        textView2 = findViewById(R.id.textview2);
         textView2.setText("Fulano");
-        textView3.setText("Diabetes");
-        textView4.setText("0");
+        edname = findViewById(R.id.editlogin);
+        edpassword = findViewById(R.id.editpass);
         //listview1=(ListView) findViewById(R.id.listview1);
 
        //textView1= findViewById(R.id.textview1);
        //Firebase
-        db = FirebaseFirestore.getInstance();
+
+        // FirebaseUser currentUser = mAuth.getCurrentUser();
+
+       /* db = FirebaseFirestore.getInstance();
         myRef=db.collection("Users");
 
         myRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -80,34 +113,29 @@ private Button btn1, btn2;
                     Log.i("FIREBASE", "Error getting documents", task.getException());
                 }
             }
-        });
+        }); */
 
-        // LIST VIEW
-
-      /* if(pacientes[0]!= null) {
-           ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,R.layout.activity_listview, R.id.list_item,pacientes);
-           listview1.setAdapter(myAdapter);
-       }*/
 
      //  <---------------------------------------------------- View ACTIONS_---------------------------------------->
 
       btn1.setOnClickListener(new View.OnClickListener() {
           @SuppressLint("SetTextI18n")
           public void onClick(View v) {
-              if(j<i){
-                  textView2.setText(pacientes[j]);
-                  textView3.setText(mUserArray[j].getNickname());
-                  textView4.setText(mUserArray[j].getTransactions().toString());
-                  j++;
+
+              email = edname.getText().toString();
+              password = edpassword.getText().toString();
+              login(email, password);
+              fbuser = mAuth.getCurrentUser();
+              if (fbuser != null) {
+                  String u = fbuser.getUid();
+                  textView2.setText(u);
               }
-              else{
-                  textView2.setText(pacientes[0]);
-                  textView3.setText(mUserArray[0].getNickname());
-                  textView4.setText(mUserArray[0].getTransactions().toString());
-              }
+
+              //textView2.setText(fbuser.getUid().toString());
+              // Intent myIntent = new Intent(this, Opcoes.class);
+              //myIntent.putExtra(UID, fbuser.getUid().toString());
+              //startActivity(myIntent);
           }
-
-
       });
     }
 }
