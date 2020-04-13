@@ -2,6 +2,7 @@ package com.mx.mobi_flm;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,9 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +25,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String UID = "com.mx.mobi_flm.UID";
     TextView textView1, textView2;
 //Views members
 private Button btn1;
@@ -37,16 +34,13 @@ private Button btn1;
     Integer i=0;
     Integer j=0;
     private String email, password;
-    User mUser1, mUser2,mUser3;
     private User[] mUserArray= new User[10];
     private String user;
-    private Boolean logedin = false;
+
     // Firebase members
     private FirebaseAuth mAuth;
     private FirebaseUser fbuser;
-    private FirebaseFirestore db;
-    private CollectionReference myRef ;
-    private DocumentReference myDoc;
+
 
     private void login(String email, String password) {
 
@@ -89,31 +83,6 @@ private Button btn1;
         textView2.setText("Fulano");
         edname = findViewById(R.id.editlogin);
         edpassword = findViewById(R.id.editpass);
-        //listview1=(ListView) findViewById(R.id.listview1);
-
-       //textView1= findViewById(R.id.textview1);
-       //Firebase
-
-        // FirebaseUser currentUser = mAuth.getCurrentUser();
-
-       /* db = FirebaseFirestore.getInstance();
-        myRef=db.collection("Users");
-
-        myRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                        Log.i("FIREBASE", i.toString()+ ":"+ document.getId() + " => " +document.getData());
-                        mUserArray[i]=document.toObject(User.class);
-                        Log.i("DAO", mUserArray[i].toString());
-                        pacientes[i++]= document.getId();
-                    }
-                } else {
-                    Log.i("FIREBASE", "Error getting documents", task.getException());
-                }
-            }
-        }); */
 
 
      //  <---------------------------------------------------- View ACTIONS_---------------------------------------->
@@ -124,17 +93,20 @@ private Button btn1;
 
               email = edname.getText().toString();
               password = edpassword.getText().toString();
-              login(email, password);
+              /*  if( (email!= null) && (password!=null)) { */
+              //login(email, password);
+              login("miguelmonte.vix@gmail.com", "cabecadedragao");
               fbuser = mAuth.getCurrentUser();
+              //}
               if (fbuser != null) {
                   String u = fbuser.getUid();
                   textView2.setText(u);
+
+                  Intent myIntent = new Intent(MainActivity.this, Opcoes.class);
+                  myIntent.putExtra("UID", fbuser.getUid());
+                  startActivity(myIntent);
               }
 
-              //textView2.setText(fbuser.getUid().toString());
-              // Intent myIntent = new Intent(this, Opcoes.class);
-              //myIntent.putExtra(UID, fbuser.getUid().toString());
-              //startActivity(myIntent);
           }
       });
     }

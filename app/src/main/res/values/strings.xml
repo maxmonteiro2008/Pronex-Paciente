@@ -7,9 +7,9 @@
     <string name="pacientes">Paciente:</string>
     <string name="opcoes">Opções:</string>
     <string name="doenca">Doenças:</string>
-    <string name="dias">Dias de Tratamento:</string>
+    <string name="dias">você está no:</string>
     <string name="getpacientes"> Buscar Pacientes</string>
-    <string name="title_activity_listview">activity_listview</string>
+    <string name="tratamento_complement"> º dia de tratamento </string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

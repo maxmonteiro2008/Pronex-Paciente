@@ -6,9 +6,8 @@
     <color name="p_colorful_SecundaryAlt">#03DAC5</color>
     <color name="p_colorful_Error">#E27D60</color>
     <color name="p_colorful_ErrorAlt">#E8A87C</color>
-    <color name="p_colorful_back">#ecf0f1</color>
-
-
+    <color name="p_colorful_bgraund_Alt">#c1fda0</color>
+    <color name="p_colorful_bgraund">#fdffe2</color>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
