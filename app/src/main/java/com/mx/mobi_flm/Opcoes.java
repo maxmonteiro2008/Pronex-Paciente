@@ -1,5 +1,7 @@
 package com.mx.mobi_flm;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Opcoes extends AppCompatActivity {
-
+    private Context mContext;
     public static Paciente[] mPacientesArray = new Paciente[10];
     private ImageButton btn1, btn2, btn3, btn4;
     public static String[] pacientesid = new String[10];
@@ -67,10 +69,8 @@ public class Opcoes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opcoes);
-
+        mContext = getApplicationContext();
         this.onStart();
-        //uid = getIntent().getStringExtra("UID");
-        //PacientRef = db.getInstance().collection("pacientes").document(uid);
         tsn = Timestamp.now();
 
 
@@ -105,7 +105,11 @@ public class Opcoes extends AppCompatActivity {
                             long dlt = dsn.getTime() - ds.getTime();
                             dlt = dlt / (60 * 60 * 24 * 1000);
                             textView6.setText(Long.toString(dlt));
-                            Log.i("DOCUMENT", "DocumentSnapshot data: " + task.getResult().getData().toString());
+                            btn1.setVisibility(View.VISIBLE);
+                            btn2.setVisibility(View.VISIBLE);
+                            btn3.setVisibility(View.VISIBLE);
+                            btn4.setVisibility(View.VISIBLE);
+                            //Log.i("DOCUMENT", "DocumentSnapshot data: " + task.getResult().getData().toString());
                         } else {
                             Log.i("DOCUMENT", "No such document");
                         }
@@ -118,8 +122,12 @@ public class Opcoes extends AppCompatActivity {
 
         }
 
-
+        btn1.setVisibility(View.INVISIBLE);
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+        btn4.setVisibility(View.INVISIBLE);
 //  <-----------------------------------------------   UI   actions------------------------------------------------------------------------------------------------->
+        //INformação
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,6 +139,44 @@ public class Opcoes extends AppCompatActivity {
                 }
             }
         });
+
+        //Tomar Medicação
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mypaciente != null) {
+                    textView2.setText(mypaciente.getNome() + mypaciente.getSobrenome());
+                } else {
+                    textView2.setText("error");
+                }
+            }
+        });
+
+        //Configurar horário medicação
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent hmed = new Intent(Opcoes.this, Hora.class);
+                startActivity(hmed);
+            }
+        });
+
+
+        //Como estou me asentindo
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mypaciente != null) {
+                    textView2.setText(mypaciente.getNome() + mypaciente.getSobrenome());
+                } else {
+                    textView2.setText("error");
+                }
+            }
+        });
+
 
     }//onCreate
 } //Activity
