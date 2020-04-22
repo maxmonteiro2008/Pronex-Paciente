@@ -5,12 +5,13 @@
     <string name="card">CArdView</string>
     <string name="test">TESTE TOTAL</string>
     <string name="pacientes">Paciente:</string>
+    <string name="fulano"> PacienteX</string>
     <string name="opcoes">Opções:</string>
     <string name="doenca">Doenças:</string>
     <string name="dias">você está no:</string>
     <string name="getpacientes"> Buscar Pacientes</string>
     <string name="tratamento_complement"> º dia de tratamento </string>
-    <!-- Strings used for fragments for navigation -->
+    <string name="blanck"></string>
     <string name="horario">Escolha o Horário</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>

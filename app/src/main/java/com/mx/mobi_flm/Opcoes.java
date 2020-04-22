@@ -17,7 +17,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.Date;
 import java.util.concurrent.locks.Lock;
@@ -48,8 +47,6 @@ public class Opcoes extends AppCompatActivity {
     private FirebaseFirestore db;
     private CollectionReference pacientesCollRef;
     private DocumentReference PacientRef;
-    private DocumentSnapshot mysnapshot;
-    private QueryDocumentSnapshot myQDoc;
 
     public void onStart() {
         super.onStart();
@@ -57,15 +54,7 @@ public class Opcoes extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
     }
 
-    private void setMypacient(Paciente p) {
-        mypaciente.setNome(p.getNome());
-        mypaciente.setSobrenome(p.getSobrenome());
-        mypaciente.setCelular(p.getCelular());
-        mypaciente.setEmail(p.getEmail());
-        mypaciente.setProfissional(p.getProfissional());
-        mypaciente.setInichiv(p.getInichiv());
-        mypaciente.setDoencas(p.getDoencas());
-    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opcoes);
@@ -95,8 +84,8 @@ public class Opcoes extends AppCompatActivity {
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if (task.isSuccessful()) {
                         if (task.getResult().exists()) {
-                            setMypacient(task.getResult().toObject(Paciente.class));
-                            textView2.setText(task.getResult().get("nome").toString());
+                            mypaciente = task.getResult().toObject(Paciente.class);
+                            textView2.setText(task.getResult().getString("nome"));
                             Integer i = Integer.parseInt(task.getResult().get("doencas").toString());
                             textView4.setText(doencas[i]);
                             ts = task.getResult().getTimestamp("inictb");
@@ -109,7 +98,7 @@ public class Opcoes extends AppCompatActivity {
                             btn2.setVisibility(View.VISIBLE);
                             btn3.setVisibility(View.VISIBLE);
                             btn4.setVisibility(View.VISIBLE);
-                            //Log.i("DOCUMENT", "DocumentSnapshot data: " + task.getResult().getData().toString());
+                            Log.i("DOCUMENT", "DocumentSnapshot data: " + task.getResult().getData().toString());
                         } else {
                             Log.i("DOCUMENT", "No such document");
                         }
@@ -145,11 +134,9 @@ public class Opcoes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (mypaciente != null) {
-                    textView2.setText(mypaciente.getNome() + mypaciente.getSobrenome());
-                } else {
-                    textView2.setText("error");
-                }
+                Intent medIntent = new Intent(Opcoes.this, Medicacao.class);
+                startActivity(medIntent);
+
             }
         });
 
@@ -172,7 +159,7 @@ public class Opcoes extends AppCompatActivity {
                 if (mypaciente != null) {
                     textView2.setText(mypaciente.getNome() + mypaciente.getSobrenome());
                 } else {
-                    textView2.setText("error");
+                    textView2.setText("Error");
                 }
             }
         });

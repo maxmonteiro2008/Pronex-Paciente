@@ -26,18 +26,19 @@
         android:layout_below="@id/Timer1"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="2dp"
-        android:text="@string/hello" />
+        android:text="@string/hello"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="12sp" />
 
     <TimePicker
         android:id="@+id/Timer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="8dp"
 
         />
 </RelativeLayout>

@@ -80,7 +80,7 @@ private Button btn1;
         //Views connection
         btn1 = findViewById(R.id.button1);
         textView2 = findViewById(R.id.textview2);
-        textView2.setText("Fulano");
+        textView2.setText("Usuario-Não-Autenticado");
         edname = findViewById(R.id.editlogin);
         edpassword = findViewById(R.id.editpass);
 
@@ -99,8 +99,8 @@ private Button btn1;
               fbuser = mAuth.getCurrentUser();
               //}
               if (fbuser != null) {
-                  String u = fbuser.getUid();
-                  textView2.setText(u);
+                  //String u = fbuser.getUid();
+                  textView2.setText("Usuario-Autenticado");
 
                   Intent myIntent = new Intent(MainActivity.this, Opcoes.class);
                   myIntent.putExtra("UID", fbuser.getUid());
