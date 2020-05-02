@@ -29,6 +29,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -46,11 +57,10 @@ import androidx.core.app.ActivityCompat;
 
 
 public class Medicacao extends AppCompatActivity {
-    //View Members
+    //Camera  Members
     private static final String TAG = "AndroidCameraApi";
     private static final int REQUEST_CAMERA_PERMISSION = 200;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
-
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
         ORIENTATIONS.append(Surface.ROTATION_90, 0);
@@ -62,11 +72,13 @@ public class Medicacao extends AppCompatActivity {
     protected CameraCaptureSession cameraCaptureSessions;
     protected CaptureRequest captureRequest;
     protected CaptureRequest.Builder captureRequestBuilder;
-    private Button btn1;
+    // FireBase members
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
+    StorageReference mfoto;
     private TextureView textureView;
-    //Foto members
-    private String cameraId;
-    private Size imageDimension;
+
+
     TextureView.SurfaceTextureListener textureListener = new TextureView.SurfaceTextureListener() {
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -88,7 +100,9 @@ public class Medicacao extends AppCompatActivity {
         public void onSurfaceTextureUpdated(SurfaceTexture surface) {
         }
     };
+    FirebaseStorage storage;
     private ImageReader imageReader;
+    private String cameraId;
     private File file;
     private boolean mFlashSupported;
     private Handler mBackgroundHandler;
@@ -124,11 +138,73 @@ public class Medicacao extends AppCompatActivity {
         }
     };
     private HandlerThread mBackgroundThread;
+    private Size imageDimension;
+    //View Members
+    private Button btn1;
+    //Aux Members
+    private Calendar mcalendar;
+    private String mfotoname;
+    private FirebaseFirestore db;
+    private CollectionReference medicacaoCollRef;
+
+
+    public void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+    }
+
+    private void uploadFoto(byte[] data) {
+        StringBuilder nome = new StringBuilder();
+        nome.append(mcalendar.get(Calendar.MONTH)).append("/").append("dia-").append(mcalendar.get(Calendar.DAY_OF_MONTH)).append(".jpg");
+        mfoto = storage.getReference("/" + currentUser.getUid() + "/" + nome);
+        mfotoname = "/" + currentUser.getUid() + "/" + nome;
+        UploadTask uploadTask = mfoto.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.i("STORAGE: ", exception.getMessage());
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Log.i("STORAGE: ", taskSnapshot.getMetadata().getPath());
+            }
+        });
+
+
+    }//upload foto
+
+    private void saveTomarmedicacao() {
+        TomarMedicacao med = new TomarMedicacao(currentUser.getUid(), mcalendar.getTime(), mfotoname);
+        medicacaoCollRef.add(med)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
+    }//save Tomar
+
+    //-----------------------------------------ONCREATE ------------------------------------------->>
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicacao);
+        //FB - Auth
+        onStart();
+        storage = FirebaseStorage.getInstance();
+        mcalendar = Calendar.getInstance();
+        db = FirebaseFirestore.getInstance();
+        medicacaoCollRef = db.collection("medicacao");
 
         textureView = findViewById(R.id.texturecamera);
         assert textureView != null;
@@ -139,8 +215,10 @@ public class Medicacao extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takePicture();
+                saveTomarmedicacao();
+
             }
-        });
+        });//button click;
     }//onCreate
 
     protected void startBackgroundThread() {
@@ -160,6 +238,7 @@ public class Medicacao extends AppCompatActivity {
         }
     }
 
+    //------------------------------------TAKE PICTURE----------------------------------------------->>
     protected void takePicture() {
         if (null == cameraDevice) {
             Log.e(TAG, "cameraDevice is null");
@@ -178,8 +257,8 @@ public class Medicacao extends AppCompatActivity {
                 width = jpegSizes[0].getWidth();
                 height = jpegSizes[0].getHeight();
             }
-            ImageReader reader = ImageReader.newInstance(width, height, ImageFormat.JPEG, 1);
-            List<Surface> outputSurfaces = new ArrayList<Surface>(2);
+            ImageReader reader = ImageReader.newInstance(width, height, ImageFormat.JPEG, 5);
+            List<Surface> outputSurfaces = new ArrayList<Surface>(5);
             outputSurfaces.add(reader.getSurface());
             outputSurfaces.add(new Surface(textureView.getSurfaceTexture()));
             final CaptureRequest.Builder captureBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
@@ -189,9 +268,7 @@ public class Medicacao extends AppCompatActivity {
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
             StringBuilder name = new StringBuilder();
-            name.append(Calendar.MONTH).append("/").append(Calendar.DAY_OF_MONTH).append("/").append(Calendar.YEAR).append("-")
-                    .append(Calendar.HOUR)
-                    .append("-").append(Calendar.MINUTE).append("-").append(Calendar.SECOND).append(".jpg");
+            name.append(currentUser.getUid()).append(".jpg");
 
             final File file = new File(Environment.getExternalStorageDirectory() + "/" + name);
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
@@ -203,6 +280,7 @@ public class Medicacao extends AppCompatActivity {
                         ByteBuffer buffer = image.getPlanes()[0].getBuffer();
                         byte[] bytes = new byte[buffer.capacity()];
                         buffer.get(bytes);
+                        uploadFoto(bytes);
                         save(bytes);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
