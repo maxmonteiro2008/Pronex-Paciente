@@ -156,11 +156,9 @@ public class Opcoes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (mypaciente != null) {
-                    textView2.setText(mypaciente.getNome() + mypaciente.getSobrenome());
-                } else {
-                    textView2.setText("Error");
-                }
+                Intent sent = new Intent(Opcoes.this, Sentimento.class);
+                startActivity(sent);
+
             }
         });
 

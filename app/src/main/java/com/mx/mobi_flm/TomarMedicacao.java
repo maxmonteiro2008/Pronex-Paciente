@@ -5,7 +5,7 @@ import java.util.Date;
 public class TomarMedicacao {
     private String paciente;
     private Date data;
-    private String foto;
+    private String foto_ref;
 
     public TomarMedicacao() {
     }
@@ -13,7 +13,7 @@ public class TomarMedicacao {
     public TomarMedicacao(String paciente, Date data, String foto) {
         this.paciente = paciente;
         this.data = data;
-        this.foto = foto;
+        this.foto_ref = foto;
     }
 
     public String getPaciente() {
@@ -32,11 +32,11 @@ public class TomarMedicacao {
         this.data = data;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getFoto_Ref() {
+        return foto_ref;
     }
 
     public void setFoto(String foto) {
-        this.foto = foto;
+        this.foto_ref = foto;
     }
 }

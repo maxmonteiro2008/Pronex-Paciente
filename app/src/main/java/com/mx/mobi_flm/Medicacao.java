@@ -156,9 +156,11 @@ public class Medicacao extends AppCompatActivity {
 
     private void uploadFoto(byte[] data) {
         StringBuilder nome = new StringBuilder();
-        nome.append(mcalendar.get(Calendar.MONTH)).append("/").append("dia-").append(mcalendar.get(Calendar.DAY_OF_MONTH)).append(".jpg");
-        mfoto = storage.getReference("/" + currentUser.getUid() + "/" + nome);
-        mfotoname = "/" + currentUser.getUid() + "/" + nome;
+        nome.append("/").append(currentUser.getUid()).append("/").append(mcalendar.get(Calendar.MONTH)).append("/").append("dia-").append(mcalendar.get(Calendar.DAY_OF_MONTH)).append(".jpg");
+
+        mfotoname = nome.toString();
+        mfoto = storage.getReference(mfotoname);
+
         UploadTask uploadTask = mfoto.putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -268,9 +270,12 @@ public class Medicacao extends AppCompatActivity {
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
             StringBuilder name = new StringBuilder();
-            name.append(currentUser.getUid()).append(".jpg");
-
-            final File file = new File(Environment.getExternalStorageDirectory() + "/" + name);
+            name.append("/").append(currentUser.getUid()).append("/").append(mcalendar.get(Calendar.MONTH))
+                    .append("/")
+                    .append("dia-").append(mcalendar.get(Calendar.DAY_OF_MONTH))
+                    .append(".jpg");
+            mfotoname = name.toString();
+            final File file = new File(Environment.getExternalStorageDirectory() + mfotoname);
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
                 public void onImageAvailable(ImageReader reader) {
@@ -381,7 +386,7 @@ public class Medicacao extends AppCompatActivity {
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
-        Log.e(TAG, "openCamera X");
+        Log.e(TAG, "openCamera:" + cameraId);
     }
 
     protected void updatePreview() {

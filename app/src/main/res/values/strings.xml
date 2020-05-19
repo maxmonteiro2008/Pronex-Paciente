@@ -19,4 +19,24 @@
     <string name="senha">Senha</string>
     <string name="title_user_list">Users</string>
     <string name="title_user_detail">User Detail</string>
+
+    <!--Strings  de Sintomas     -->
+    <string name="s_1_Cansado">Cansado</string>
+    <string name="s_2_Tonto">Tonto</string>
+    <string name="s_3_Insônia">Insônia</string>
+    <string name="s_4_Fraqueza">Fraqueza</string>
+    <string name="s_5_apetite">Falta de apetite</string>
+    <string name="s_6_Febre">Febre</string>
+    <string name="s_7_vomitar">Vontade de vomitar</string>
+    <string name="s_8_Diarréia">Diarréia</string>
+    <string name="s_9_estômago">Dor no estômago</string>
+    <string name="s_10_corpo">Dor no corpo</string>
+    <string name="s_11_pele">Pele vermelha</string>
+    <string name="s_12_Coceira"> Coceira</string>
+    <string name="s_13_Tremores">Tremores</string>
+    <string name="s_14_vermelho">Suor ou urina vermelhas</string>
+    <string name="s_15_Tristeza"> Tristeza  grande</string>
+    <string name="s_16_dormir"> Só quero ficar dormindo</string>
+
+
 </resources>

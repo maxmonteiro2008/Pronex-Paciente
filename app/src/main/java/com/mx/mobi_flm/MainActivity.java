@@ -100,6 +100,7 @@ private Button btn1;
               //}
               if (fbuser != null) {
                   //String u = fbuser.getUid();
+                  textView2.setTextColor(getResources().getColor(R.color.green));
                   textView2.setText("Usuario-Autenticado");
 
                   Intent myIntent = new Intent(MainActivity.this, Opcoes.class);
