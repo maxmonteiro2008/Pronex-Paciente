@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/login" />
+        android:src="@drawable/login_96" />
 
     <LinearLayout
         android:id="@+id/LL_int_1"
@@ -30,7 +30,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:includeFontPadding="true"
-            android:text="@string/pacientes"
+            android:text="@string/login2"
             android:textAlignment="textStart"
             android:textSize="24sp"
             android:textStyle="bold|italic" />
@@ -43,7 +43,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:includeFontPadding="true"
-            android:text="@string/hello"
+            android:text="@string/benvindo"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="18sp"
             android:textStyle="normal" />
@@ -59,7 +59,7 @@
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -95,4 +95,6 @@
             android:hint="@string/login"
             android:inputType="textEmailAddress" />
     </LinearLayout>
+
+
 </LinearLayout>

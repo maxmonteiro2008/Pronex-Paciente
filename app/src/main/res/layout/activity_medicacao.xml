@@ -6,6 +6,12 @@
     android:orientation="vertical"
     tools:context=".Medicacao">
 
+    <TextureView
+        android:id="@+id/texturecamera"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_marginTop="2dp" />
+
     <Button
         android:id="@+id/buttonMed"
         android:layout_width="match_parent"
@@ -15,10 +21,4 @@
         android:background="@color/design_default_color_secondary"
         android:drawableRight="@drawable/camera_48"
         android:text="Tire a Foto de você tomando a Medicação" />
-
-    <TextureView
-        android:id="@+id/texturecamera"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginTop="2dp" />
 </LinearLayout>

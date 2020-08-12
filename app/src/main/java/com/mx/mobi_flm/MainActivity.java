@@ -95,7 +95,11 @@ private Button btn1;
               password = edpassword.getText().toString();
               /*  if( (email!= null) && (password!=null)) { */
               //login(email, password);
-              login("miguelmonte.vix@gmail.com", "cabecadedragao");
+              if (email.isEmpty() || password.isEmpty()) {
+                  login("miguelmonte.vix@gmail.com", "cabecadedragao");
+              } else {
+                  login(email, password);
+              }
               fbuser = mAuth.getCurrentUser();
               //}
               if (fbuser != null) {

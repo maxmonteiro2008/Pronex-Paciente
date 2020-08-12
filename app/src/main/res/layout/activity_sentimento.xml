@@ -18,36 +18,59 @@
         <Button
             android:id="@+id/buttonsave"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            />
+            android:layout_height="48dp"
+            android:text="Salvar"
+            android:textSize="24sp" />
 
         <LinearLayout
-            android:id="@+id/LL_int_1_1_h"
+            android:id="@+id/LL_seek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txv1"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/RL_imag"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Como você está se sentindo hoje?"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Normal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/imgbad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/head_bandage_face_96" />
+
+                <ImageView
+                    android:id="@+id/imgwhatever"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_toEndOf="@id/imgbad"
+                    android:src="@drawable/neutral_face_96" />
+
+                <ImageView
+                    android:id="@+id/imggood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_toEndOf="@id/imgwhatever"
+                    android:src="@drawable/grinning_face_with_big_eyes_96" />
+            </RelativeLayout>
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:max="10"
+                android:min="0"
+                android:progress="0" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/LL_int_1_2_h"
@@ -59,7 +82,7 @@
                 android:id="@+id/txv3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Marque os sintomas que você está  sentindo:"
+                android:text="Marque os sintomas que está  sentindo:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -82,233 +105,182 @@
             android:id="@+id/LL_int_2h"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox1"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:autoSizeMinTextSize="@dimen/app_bar_height"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_tired_face_24"
+                android:foregroundTint="@color/colorPrimaryDark"
+                android:foregroundTintMode="src_atop"
                 android:text="@string/s_1_Cansado"
+                android:textSize="18sp" />
 
-                />
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox2"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_dizzy_24"
                 android:text="@string/s_2_Tonto"
+                android:textSize="18sp"
 
                 />
-        </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/LL_int_3h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox3"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_insomnia_24"
-                android:text="@string/s_3_Insônia" />
+                android:text="@string/s_3_Insônia"
+                android:textSize="18sp" />
 
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox4"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_person_tired_24"
                 android:text="@string/s_4_Fraqueza"
+                android:textSize="18sp"
 
                 />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LL_int_4h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox5"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_zipper_mouth_face_24"
-                android:text="@string/s_5_apetite" />
+                android:text="@string/s_5_apetite"
+                android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox6"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_fever_24"
-                android:text="@string/s_6_Febre" />
-        </LinearLayout>
+                android:text="@string/s_6_Febre"
+                android:textSize="18sp" />
 
-        <LinearLayout
-            android:id="@+id/LL_int_5h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox7"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_face_vomiting_24"
-                android:text="@string/s_7_vomitar" />
+                android:text="@string/s_7_vomitar"
+                android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox8"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/s_8_Diarréia" />
+                android:text="@string/s_8_Diarréia"
+                android:textSize="18sp" />
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LL_int_6h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox9"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/s_9_estômago" />
+                android:text="@string/s_9_estômago"
+                android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox10"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/s_10_corpo" />
+                android:text="@string/s_10_corpo"
+                android:textSize="18sp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LL_int_7h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox11"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/s_11_pele" />
+                android:text="@string/s_11_pele"
+                android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox12"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/s_12_Coceira" />
-        </LinearLayout>
+                android:text="@string/s_12_Coceira"
+                android:textSize="18sp" />
 
-        <LinearLayout
-            android:id="@+id/LL_int_8h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox13"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_shaking_24"
-                android:text="@string/s_13_Tremores" />
+                android:text="@string/s_13_Tremores"
+                android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox14"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_hot_face_24"
-                android:text="@string/s_14_vermelho" />
-        </LinearLayout>
+                android:text="@string/s_14_vermelho"
+                android:textSize="18sp" />
 
-        <LinearLayout
-            android:id="@+id/LL_int_9h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox15"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/s_loudly_crying_face_24"
-                android:text="@string/s_15_Tristeza" />
+                android:text="@string/s_15_Tristeza"
+                android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox16"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:drawableLeft="@drawable/sleeping_face_24"
-                android:text="@string/s_16_dormir" />
+                android:text="@string/s_16_dormir"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/LL_int_1h"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/LL_int_1_1_h"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imgbad"
+            <TextView
+                android:id="@+id/txv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/head_bandage_face_96" />
+                android:text="Como você está se sentindo hoje?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/imgwhatever"
+            <TextView
+                android:id="@+id/txv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_toEndOf="@id/imgbad"
-                android:src="@drawable/neutral_face_96" />
+                android:text="Normal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/imggood"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_toEndOf="@id/imgwhatever"
-                android:src="@drawable/grinning_face_with_big_eyes_96" />
-        </RelativeLayout>
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:max="10"
-            android:min="0"
-            android:progress="0" />
-
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

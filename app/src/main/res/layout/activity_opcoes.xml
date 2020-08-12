@@ -20,7 +20,7 @@
         android:layoutMode="opticalBounds"
         android:orientation="vertical"
         android:rowCount="2"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:visibility="visible">
 
         <ImageButton
@@ -31,7 +31,7 @@
             android:layout_column="0"
             android:layout_gravity="center"
             android:contentDescription="@string/test"
-            android:src="@drawable/health_graph" />
+            android:src="@drawable/information_96" />
 
         <ImageButton
             android:id="@+id/button2"

@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -33,7 +33,7 @@ public class Sentimento extends AppCompatActivity {
     FirebaseFirestore db;
     CollectionReference sentimento;
     //View Members
-    private CheckBox cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cb9, cb10, cb11, cb12, cb13, cb14, cb15, cb16;
+    private SwitchMaterial cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cb9, cb10, cb11, cb12, cb13, cb14, cb15, cb16;
 
     // FireBase member
     private Button btn1;
@@ -87,76 +87,80 @@ public class Sentimento extends AppCompatActivity {
         img2 = findViewById(R.id.imgwhatever);
         img3 = findViewById(R.id.imggood);
 
-        cb1 = findViewById(R.id.checkbox1);
-        cb2 = findViewById(R.id.checkbox2);
-        cb3 = findViewById(R.id.checkbox3);
-        cb4 = findViewById(R.id.checkbox4);
-        cb5 = findViewById(R.id.checkbox5);
-        cb6 = findViewById(R.id.checkbox6);
-        cb7 = findViewById(R.id.checkbox7);
-        cb8 = findViewById(R.id.checkbox8);
-        cb9 = findViewById(R.id.checkbox9);
-        cb10 = findViewById(R.id.checkbox10);
-        cb11 = findViewById(R.id.checkbox11);
-        cb12 = findViewById(R.id.checkbox12);
-        cb13 = findViewById(R.id.checkbox13);
-        cb14 = findViewById(R.id.checkbox14);
-        cb15 = findViewById(R.id.checkbox15);
-        cb16 = findViewById(R.id.checkbox16);
+        cb1 = findViewById(R.id.switch1);
+        cb2 = findViewById(R.id.switch2);
+        cb3 = findViewById(R.id.switch3);
+        cb4 = findViewById(R.id.switch4);
+        cb5 = findViewById(R.id.switch5);
+        cb6 = findViewById(R.id.switch6);
+        cb7 = findViewById(R.id.switch7);
+        cb8 = findViewById(R.id.switch8);
+        cb9 = findViewById(R.id.switch9);
+        cb10 = findViewById(R.id.switch10);
+        cb11 = findViewById(R.id.switch11);
+        cb12 = findViewById(R.id.switch12);
+        cb13 = findViewById(R.id.switch13);
+        cb14 = findViewById(R.id.switch14);
+        cb15 = findViewById(R.id.switch15);
+        cb16 = findViewById(R.id.switch16);
 
 
-        // VIEW ACTIONS
-        if (cb1.isChecked()) {
-            msintoma += 1;
-        }
-        if (cb2.isChecked()) {
-            msintoma += 2;
-        }
-        if (cb3.isChecked()) {
-            msintoma += 4;
-        }
-        if (cb4.isChecked()) {
-            msintoma += 8;
-        }
-        if (cb5.isChecked()) {
-            msintoma += 16;
-        }
-        if (cb6.isChecked()) {
-            msintoma += 32;
-        }
-        if (cb7.isChecked()) {
-            msintoma += 64;
-        }
-        if (cb8.isChecked()) {
-            msintoma += 128;
-        }
-        if (cb9.isChecked()) {
-            msintoma += 256;
-        }
-        if (cb10.isChecked()) {
-            msintoma += 512;
-        }
-        if (cb11.isChecked()) {
-            msintoma += 1024;
-        }
-        if (cb12.isChecked()) {
-            msintoma += 2048;
-        }
-        if (cb13.isChecked()) {
-            msintoma += 4096;
-        }
-        if (cb14.isChecked()) {
-            msintoma += 8192;
-        }
-        if (cb15.isChecked()) {
-            msintoma += 16384;
-        }
-        if (cb15.isChecked()) {
-            msintoma += 32768;
-        }
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (cb1.isChecked()) {
+                    msintoma += 1;
+                }
+                if (cb2.isChecked()) {
+                    msintoma += 2;
+                }
+                if (cb3.isChecked()) {
+                    msintoma += 4;
+                }
+                if (cb4.isChecked()) {
+                    msintoma += 8;
+                }
+                if (cb5.isChecked()) {
+                    msintoma += 16;
+                }
+                if (cb6.isChecked()) {
+                    msintoma += 32;
+                }
+                if (cb7.isChecked()) {
+                    msintoma += 64;
+                }
+                if (cb8.isChecked()) {
+                    msintoma += 128;
+                }
+                if (cb9.isChecked()) {
+                    msintoma += 256;
+                }
+                if (cb10.isChecked()) {
+                    msintoma += 512;
+                }
+                if (cb11.isChecked()) {
+                    msintoma += 1024;
+                }
+                if (cb12.isChecked()) {
+                    msintoma += 2048;
+                }
+                if (cb13.isChecked()) {
+                    msintoma += 4096;
+                }
+                if (cb14.isChecked()) {
+                    msintoma += 8192;
+                }
+                if (cb15.isChecked()) {
+                    msintoma += 16384;
+                }
+                if (cb15.isChecked()) {
+                    msintoma += 32768;
+                }
+                if (cb16.isChecked()) {
+                    msintoma += 65536;
+                }
+
                 saveSentimento(currentUser.getUid(), calendar.getTime(), msentimento, msintoma);
 
             }
@@ -182,7 +186,7 @@ public class Sentimento extends AppCompatActivity {
 
                 }
                 if (progress > 5) {
-                    txv2.setText("Muito bem");
+                    txv2.setText("Bem");
                     img1.setVisibility(View.INVISIBLE);
                     img3.setVisibility(View.VISIBLE);
                     img2.setVisibility(View.INVISIBLE);

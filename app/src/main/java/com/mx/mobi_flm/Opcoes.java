@@ -126,6 +126,8 @@ public class Opcoes extends AppCompatActivity {
                 } else {
                     textView2.setText("error");
                 }
+                Intent infoIntent = new Intent(Opcoes.this, InfoActivity.class);
+                startActivity(infoIntent);
             }
         });
 

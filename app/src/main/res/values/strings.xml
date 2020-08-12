@@ -19,6 +19,8 @@
     <string name="senha">Senha</string>
     <string name="title_user_list">Users</string>
     <string name="title_user_detail">User Detail</string>
+    <string name="login2">LOGIN:</string>
+    <string name="benvindo">Ben vindo ao App Pronex TB</string>
 
     <!--Strings  de Sintomas     -->
     <string name="s_1_Cansado">Cansado</string>
@@ -37,6 +39,38 @@
     <string name="s_14_vermelho">Suor ou urina vermelhas</string>
     <string name="s_15_Tristeza"> Tristeza  grande</string>
     <string name="s_16_dormir"> Só quero ficar dormindo</string>
+    <string name="title_activity_info">ScrollingActivity</string>
+    <string name="tb_info_text">
+        "INFORMAÇÕES SOBRE A TURBERCULOSE.\n\n"
+
+        O QUE É TUBERCULOSE? .\n\n
+        A tuberculose é uma doença infecciosa e transmissível que afeta prioritariamente os pulmões,
+        embora possa acometer outros órgãos e/ou sistemas. A doença é causada pelo Mycobacterium tuberculosis ou bacilo de Koch.\n\n"
+
+        QUAIS SINAIS E SINTOMAS?.\n\n
+        O principal sintoma da tuberculose é a tosse na forma seca ou produtiva. Por isso, recomenda-se que todo sintomático respiratório, que é a pessoa com tosse por três semanas ou mais, seja investigada para tuberculose. Há outros sinais e sintomas que podem estar presentes, como: febre vespertina; sudorese noturna; emagrecimento; cansaço/fadiga.\n\n"
+
+        PRINCIPAIS MEDICAÇÕES .\n\n"
+       Rifampicina, Isoniazida, Pirazinamina, e Etambutol.\n\n"
+
+        "TIPOS DA TUBERCULOSE .\n\n"
+        A forma pulmonar, a mais frequente. A forma extrapulmonar, que acomete outros órgãos que não o pulmão, ocorre mais frequentemente em pessoas que vivem com o HIV, especialmente entre aquelas com comprometimento imunológico.\n\n"
+
+        "PRINCIPAIS EXAMES .\n\n"
+        "Para o diagnóstico da tuberculose são utilizados os seguintes exames:\n
+         Bacteriológicos\n
+                 baciloscopia\n
+                 teste rápido molecular para tuberculose\n
+                 cultura para micobactéria\n
+         Por imagem (exame complementar)\n
+                Radiografia de tórax \n
+        COMO É TRANSMITIDA? \n\n
+        "A tuberculose é uma doença de transmissão aérea e ocorre a partir da inalação do bacilo através da fala, espirro ou tosse das pessoas com tuberculose ativa (pulmonar ou laríngea).
+        \n\n"
+
+
+    </string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>
