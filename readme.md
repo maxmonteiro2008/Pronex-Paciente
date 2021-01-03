@@ -6,4 +6,4 @@ Android App for  Diabetes patient following.
 
 
 
-![What is this](https://github.com/maxmonteiro2008/Pronex-Paciente/blob/pronex/tela_Tomar%20a%20medicacao.png)  ![What is this](./Screenshot_TB 1.png) 
+![What is this](https://github.com/maxmonteiro2008/Pronex-Paciente/blob/pronex/tela_Tomar%20a%20medicacao.png)  ![What is this](https://github.com/maxmonteiro2008/Pronex-Paciente/blob/pronex/Screenshot_TB%201.png) 
